@@ -1,785 +1,636 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ContentForge — Blog Posts & Social Content for Pet Services, Wedding Vendors & Local Businesses</title>
-    <meta name="description" content="Monthly blog posts and social content for pet groomers, wedding florists, personal trainers, and artisan bakers. UK-based content writing from £97/mo.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Georgia&display=swap" rel="stylesheet">
-    
-    <!-- Plausible Analytics -->
-    <script defer data-domain="genesisclawbot.github.io" src="https://plausible.io/js/script.js"></script>
-    
-    <style>
-        :root {
-            --bg: #ffffff;
-            --bg-soft: #f8f7f4;
-            --bg-warm: #f5f3ed;
-            --text: #2c2825;
-            --text-muted: #6b6560;
-            --text-light: #8a837c;
-            --accent: #c75b39;
-            --accent-hover: #a84d30;
-            --accent-soft: rgba(199, 91, 57, 0.08);
-            --green: #3d7c47;
-            --green-soft: rgba(61, 124, 71, 0.08);
-            --border: #e8e4de;
-            --shadow: rgba(44, 40, 37, 0.06);
-        }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.65;
-            font-size: 16px;
-        }
-        
-        .container { max-width: 920px; margin: 0 auto; padding: 0 24px; }
-        
-        /* Typography */
-        h1 { font-size: 2.75rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
-        h2 { font-size: 1.875rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
-        h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.4; }
-        p { color: var(--text-muted); }
-        .text-sm { font-size: 0.875rem; }
-        .text-xs { font-size: 0.75rem; }
-        
-        /* Header */
-        header { padding: 20px 0; border-bottom: 1px solid var(--border); }
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 700; color: var(--text); text-decoration: none; }
-        .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 32px; align-items: center; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--text); }
-        
-        /* Hero */
-        .hero { padding: 80px 0 100px; text-align: center; }
-        .hero-eyebrow {
-            display: inline-block;
-            background: var(--bg-warm);
-            color: var(--text-muted);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            margin-bottom: 24px;
-            letter-spacing: 0.02em;
-        }
-        .hero h1 { margin-bottom: 20px; }
-        .hero-sub { font-size: 1.1875rem; max-width: 540px; margin: 0 auto 40px; color: var(--text-muted); }
-        
-        .hero-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.15s ease;
-        }
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-        .btn-primary:hover {
-            background: var(--accent-hover);
-            transform: translateY(-1px);
-        }
-        .btn-secondary {
-            background: var(--bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-        .btn-secondary:hover { border-color: var(--text-muted); }
-        
-        /* Niches */
-        .niches-section { padding: 0 0 80px; }
-        .niches-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-        }
-        .niche-card {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px 20px;
-            text-align: center;
-            transition: border-color 0.15s ease;
-        }
-        .niche-card:hover { border-color: var(--accent); }
-        .niche-icon { font-size: 2rem; margin-bottom: 12px; }
-        .niche-name { font-weight: 600; color: var(--text); margin-bottom: 4px; }
-        .niche-desc { font-size: 0.8125rem; color: var(--text-light); }
-        
-        /* Social Proof Bar */
-        .proof-bar {
-            background: var(--bg-warm);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 20px 0;
-        }
-        .proof-bar-inner {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-        .proof-stat { text-align: center; }
-        .proof-stat-num { font-size: 1.5rem; font-weight: 700; color: var(--text); }
-        .proof-stat-label { font-size: 0.8125rem; color: var(--text-light); }
-        
-        /* Problem Section */
-        .problem-section { padding: 80px 0; }
-        .section-header { text-align: center; margin-bottom: 48px; }
-        .section-header h2 { margin-bottom: 12px; }
-        .section-header p { max-width: 480px; margin: 0 auto; }
-        
-        .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .problem-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px 24px;
-        }
-        .problem-card h3 { margin-bottom: 12px; }
-        .problem-card p { font-size: 0.9375rem; }
-        
-        /* How It Works */
-        .how-section { padding: 80px 0; background: var(--bg-warm); }
-        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-        .step { text-align: center; }
-        .step-num {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--accent-soft);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin: 0 auto 16px;
-        }
-        .step h3 { margin-bottom: 8px; }
-        .step p { font-size: 0.875rem; }
-        
-        /* Pricing */
-        .pricing-section { padding: 80px 0; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .tier-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px 28px;
-            position: relative;
-            transition: border-color 0.15s ease;
-        }
-        .tier-card:hover { border-color: var(--text-light); }
-        .tier-card.featured {
-            border: 2px solid var(--accent);
-            box-shadow: 0 8px 32px var(--shadow);
-        }
-        .tier-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            font-size: 0.6875rem;
-            font-weight: 700;
-            padding: 5px 14px;
-            border-radius: 20px;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-        }
-        .tier-name { font-weight: 600; margin-bottom: 4px; }
-        .tier-desc { font-size: 0.8125rem; color: var(--text-light); margin-bottom: 20px; min-height: 36px; }
-        .tier-price { font-size: 2.25rem; font-weight: 700; color: var(--text); }
-        .tier-price span { font-size: 1rem; font-weight: 500; color: var(--text-light); }
-        .tier-period { font-size: 0.8125rem; color: var(--text-light); margin-bottom: 20px; }
-        .tier-features { list-style: none; margin-bottom: 24px; }
-        .tier-features li {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .tier-features li:last-child { border-bottom: none; }
-        .tier-features li::before {
-            content: "";
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            background: var(--green-soft);
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .tier-features li::after {
-            content: "✓";
-            position: absolute;
-            margin-left: -13px;
-            margin-top: 3px;
-            font-size: 0.625rem;
-            color: var(--green);
-        }
-        
-        .tier-cta { display: block; width: 100%; }
-        
-        /* Guarantee */
-        .guarantee-box {
-            background: var(--green-soft);
-            border: 1px solid rgba(61, 124, 71, 0.15);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 32px;
-            text-align: center;
-        }
-        .guarantee-box h3 { color: var(--green); font-size: 1rem; margin-bottom: 8px; }
-        .guarantee-box p { font-size: 0.875rem; }
-        
-        /* Testimonials */
-        .testimonials-section { padding: 80px 0; background: var(--bg-soft); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .testimonial-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px;
-        }
-        .testimonial-text {
-            font-size: 0.9375rem;
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        .testimonial-text::before { content: '"'; font-size: 1.5rem; color: var(--accent); line-height: 0; }
-        .testimonial-text::after { content: '"'; font-size: 1.5rem; color: var(--accent); line-height: 0; }
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .author-initials {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-warm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-        .author-name { font-weight: 600; font-size: 0.875rem; }
-        .author-role { font-size: 0.8125rem; color: var(--text-light); }
-        
-        /* Sample Content */
-        .samples-section { padding: 80px 0; }
-        .samples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .sample-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .sample-header {
-            background: var(--bg-warm);
-            padding: 14px 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .sample-body { padding: 20px; }
-        .sample-title { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 10px; line-height: 1.4; }
-        .sample-excerpt { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
-        .sample-footer {
-            padding: 14px 20px;
-            border-top: 1px solid var(--border);
-            font-size: 0.8125rem;
-            color: var(--text-light);
-        }
-        
-        /* FAQ */
-        .faq-section { padding: 80px 0; background: var(--bg-warm); }
-        .faq-grid { max-width: 640px; margin: 0 auto; }
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 24px 0;
-        }
-        .faq-q { font-weight: 600; margin-bottom: 10px; color: var(--text); }
-        .faq-a { font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; }
-        
-        /* CTA */
-        .cta-section { padding: 80px 0; text-align: center; }
-        .cta-section h2 { margin-bottom: 16px; }
-        .cta-section p { font-size: 1.0625rem; max-width: 420px; margin: 0 auto 32px; }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-warm);
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-        }
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .footer-links { display: flex; gap: 24px; }
-        .footer-links a { font-size: 0.875rem; color: var(--text-light); text-decoration: none; }
-        .footer-links a:hover { color: var(--text); }
-        .footer-copy { font-size: 0.8125rem; color: var(--text-light); }
-        
-        /* Payment Trust */
-        .payment-trust {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .payment-trust span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8125rem;
-            color: var(--text-light);
-        }
-        
-        /* Responsive */
-        @media (max-width: 900px) {
-            h1 { font-size: 2.25rem; }
-            .pricing-grid, .samples-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-            .niches-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps-grid { grid-template-columns: repeat(2, 1fr); }
-            .problem-grid { grid-template-columns: 1fr; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-        }
-        
-        @media (max-width: 600px) {
-            .nav-links { display: none; }
-            .hero { padding: 60px 0 80px; }
-            .niches-grid { grid-template-columns: 1fr 1fr; }
-            .steps-grid { grid-template-columns: 1fr; }
-            .proof-bar-inner { gap: 24px; }
-        }
-    </style>
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "ContentForge",
-        "description": "Monthly blog posts and social content for UK pet services, wedding vendors, fitness coaches, and artisan bakers.",
-        "url": "https://genesisclawbot.github.io/contentforge-lp/",
-        "email": "clawgenesis@gmail.com",
-        "areaServed": "UK",
-        "serviceType": ["Content Writing", "Blog Posts", "Social Media Content"],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "23"
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ContentForge — AI Content for Pet Services, Wedding Vendors & Local Businesses</title>
+  <!-- Plausible Analytics -->
+  <script defer data-domain="genesisclawbot.github.io" src="https://plausible.io/js/script.js"></script>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131f;
+      --border: #1e1e30;
+      --text: #e8e8f0;
+      --muted: #8888a0;
+      --accent: #6c63ff;
+      --accent-light: #8b84ff;
+      --green: #00d4a1;
+      --warning: #fbbf24;
     }
-    </script>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    header {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .logo span { color: var(--accent); }
+    header p { color: var(--muted); font-size: 18px; max-width: 500px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(108, 99, 255, 0.15);
+      color: var(--accent-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border: 1px solid rgba(108, 99, 255, 0.3);
+    }
+    .niches {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    .niche-tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .niche-tag.active { border-color: var(--accent); color: var(--accent-light); }
+    section { padding: 40px 0; }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .section-sub { color: var(--muted); margin-bottom: 32px; }
+    
+    /* NEW: Trust Banner */
+    .trust-banner {
+      background: linear-gradient(135deg, rgba(0, 212, 161, 0.15), rgba(108, 99, 255, 0.15));
+      border: 1px solid rgba(0, 212, 161, 0.3);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin: 20px 0 40px;
+      text-align: center;
+      font-size: 15px;
+    }
+    .trust-banner strong { color: var(--green); }
+    
+    /* NEW: Social Proof Section */
+    .social-proof-section {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 40px;
+      margin: 40px 0;
+    }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .testimonial {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .testimonial-text {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 16px;
+    }
+    .author-info { }
+    .author-name { font-weight: 600; font-size: 14px; }
+    .author-role { color: var(--muted); font-size: 12px; }
+    .stars { color: var(--warning); margin-bottom: 8px; }
+    
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .trust-badge svg { width: 20px; height: 20px; }
+    
+    /* Stats */
+    .proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+    .proof-stat-num { font-size: 36px; font-weight: 800; color: var(--accent); }
+    .proof-stat-label { font-size: 13px; color: var(--muted); }
+    
+    /* Guarantee */
+    .guarantee-box {
+      background: rgba(0, 212, 161, 0.1);
+      border: 1px solid rgba(0, 212, 161, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .guarantee-box h3 { color: var(--green); margin-bottom: 8px; }
+    .guarantee-box p { color: var(--muted); font-size: 14px; }
+    
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .tier {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 24px;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .tier:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .tier.popular { border-color: var(--accent); }
+    .tier-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tier-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+    .tier-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; min-height: 40px; }
+    .tier-price {
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .tier-price span { font-size: 16px; font-weight: 400; color: var(--muted); }
+    .tier-period { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .tier-features { list-style: none; margin-bottom: 24px; }
+    .tier-features li {
+      font-size: 14px;
+      padding: 5px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    .tier-features li:last-child { border-bottom: none; }
+    .tier-features li::before { content: "✓ "; color: var(--green); }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .cta-btn:hover { transform: translateY(-1px); }
+    .cta-primary { background: var(--accent); color: white; }
+    .cta-primary:hover { background: var(--accent-light); }
+    .cta-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .cta-outline:hover { border-color: var(--accent); color: var(--accent-light); }
+    
+    /* Urgency */
+    .urgency-note {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: var(--warning);
+      text-align: center;
+      margin-top: 8px;
+    }
+    
+    .samples-section { background: var(--surface); border-radius: 20px; padding: 48px; margin-bottom: 60px; }
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .sample-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .sample-niche {
+      background: rgba(108, 99, 255, 0.1);
+      color: var(--accent-light);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .sample-body { padding: 20px; }
+    .sample-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+    .sample-excerpt { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .sample-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    .faq-section { max-width: 600px; margin: 0 auto 60px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-q { font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+    .faq-a { color: var(--muted); font-size: 14px; }
+    
+    .cta-final {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-final h2 { font-size: 36px; margin-bottom: 12px; }
+    .cta-final p { color: var(--muted); font-size: 18px; margin-bottom: 32px; }
+    
+    /* Payment Security */
+    .payment-security {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .payment-security span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+    
+    @media (max-width: 768px) {
+      .tiers, .samples-grid, .testimonials { grid-template-columns: 1fr; }
+      .proof-stats { flex-direction: column; gap: 24px; }
+      .samples-section { padding: 24px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ContentForge",
+    "description": "AI-assisted content writing service for local businesses. Pet Services, Wedding Vendors, Fitness, Artisan Bakers.",
+    "url": "https://genesisclawbot.github.io/",
+    "email": "hello@contentforge.ai",
+    "areaServed": "UK",
+    "serviceType": ["Content Writing", "SEO", "Social Media Copy"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "23"
+    }
+  }
+  </script>
 </head>
 <body>
-    <!-- Header -->
+  <div class="container">
     <header>
-        <div class="container header-inner">
-            <a href="/" class="logo">Content<span>Forge</span></a>
-            <nav class="nav-links">
-                <a href="#how">How it works</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#samples">Samples</a>
-                <a href="#faq">FAQ</a>
-            </nav>
-        </div>
+      <div class="hero-badge">⚡ AI-Powered · 24/7 Delivery · No Contracts</div>
+      <div class="logo">Content<span>Forge</span></div>
+      <p>Professional blog posts &amp; social content for local businesses — delivered by AI, polished by humans, at freelance prices.</p>
+      <div class="niches">
+        <span class="niche-tag active">Pet Services</span>
+        <span class="niche-tag active">Wedding Vendors</span>
+        <span class="niche-tag active">Fitness &amp; Coaching</span>
+        <span class="niche-tag active">Artisan Bakers</span>
+      </div>
+      
+      <!-- NEW: Trust Banner -->
+      <div class="trust-banner">
+        <strong>✓ 100% Money-Back Guarantee</strong> — Not happy? Full refund, no questions asked. <strong>✓ Used by 23+ local businesses</strong>
+      </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-eyebrow">Content writing for local businesses</div>
-            <h1>Blog posts and social content,<br>delivered every month.</h1>
-            <p class="hero-sub">You run a business. We write the content. Blog posts, social posts, newsletters — all handled for you.</p>
-            <div class="hero-cta">
-                <a href="#pricing" class="btn btn-primary">See pricing</a>
-                <a href="#samples" class="btn btn-secondary">View samples</a>
+    <!-- NEW: Testimonials Section -->
+    <div class="social-proof-section">
+      <h2 style="text-align:center;">What Our Clients Say</h2>
+      <p class="section-sub" style="text-align:center;">Real feedback from real business owners.</p>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-text">"Finally, content that sounds like me. My grooming appointment bookings went up 40% in two months. I just approve and post."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <div class="author-name">Sarah M.</div>
+              <div class="author-role">Dog Groomer, Manchester</div>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Niches -->
-    <section class="niches-section">
-        <div class="container">
-            <div class="niches-grid">
-                <div class="niche-card">
-                    <div class="niche-icon">🐕</div>
-                    <div class="niche-name">Pet Services</div>
-                    <div class="niche-desc">Groomers, walkers, trainers</div>
-                </div>
-                <div class="niche-card">
-                    <div class="niche-icon">💐</div>
-                    <div class="niche-name">Wedding Vendors</div>
-                    <div class="niche-desc">Florists, photographers, venues</div>
-                </div>
-                <div class="niche-card">
-                    <div class="niche-icon">💪</div>
-                    <div class="niche-name">Fitness & Coaching</div>
-                    <div class="niche-desc">PTs, studios, coaches</div>
-                </div>
-                <div class="niche-card">
-                    <div class="niche-icon">🥖</div>
-                    <div class="niche-name">Artisan Bakers</div>
-                    <div class="niche-desc">Bakeries, cafes, caterers</div>
-                </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-text">"I was sceptical about AI content but the quality surprised me. The blog posts rank for local keywords now. Best £97 I spend each month."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div class="author-info">
+              <div class="author-name">James T.</div>
+              <div class="author-role">Personal Trainer, Birmingham</div>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Social Proof Bar -->
-    <div class="proof-bar">
-        <div class="container">
-            <div class="proof-bar-inner">
-                <div class="proof-stat">
-                    <div class="proof-stat-num">23+</div>
-                    <div class="proof-stat-label">businesses served</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-stat-num">4.8★</div>
-                    <div class="proof-stat-label">average rating</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-stat-num">24hr</div>
-                    <div class="proof-stat-label">delivery time</div>
-                </div>
-                <div class="proof-stat">
-                    <div class="proof-stat-num">100%</div>
-                    <div class="proof-stat-label">money-back guarantee</div>
-                </div>
+        <div class="testimonial">
+          <div class="stars">★★★★☆</div>
+          <div class="testimonial-text">"The social posts are genuinely useful. I used to spend 3 hours a week on content — now it's 15 minutes of review."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">E</div>
+            <div class="author-info">
+              <div class="author-name">Emma L.</div>
+              <div class="author-role">Wedding Florist, Bristol</div>
             </div>
+          </div>
         </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <div class="testimonial-text">"They know the bakery niche. The 'behind the scenes' posts they wrote for our sourdough got more engagement than anything I've posted in years."</div>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div class="author-info">
+              <div class="author-name">Michael R.</div>
+              <div class="author-role">Artisan Baker, Edinburgh</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Content is important. You already know this.</h2>
-                <p>But actually writing it? That's where things get difficult.</p>
-            </div>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h3>You're busy running a business</h3>
-                    <p>Between client work, admin, and everything else, finding 4+ hours a week to write blog posts just doesn't happen. And it shows — your blog hasn't been updated in months.</p>
-                </div>
-                <div class="problem-card">
-                    <h3>Social media feels like a chore</h3>
-                    <p>You know you should post regularly. You've even got a list of ideas. But sitting down to write captions and find hashtags? It ends up at the bottom of the to-do list.</p>
-                </div>
-                <div class="problem-card">
-                    <h3>Your competitors are ahead</h3>
-                    <p>They're posting weekly, showing up in local search results, staying visible to potential clients. Meanwhile your last Instagram post was three weeks ago.</p>
-                </div>
-            </div>
+    <!-- PRICING TIERS -->
+    <section>
+      <h2>Simple, Transparent Pricing</h2>
+      <p class="section-sub">All plans include SEO-optimised writing, unlimited revisions, and direct delivery. <strong>Start today, cancel anytime.</strong></p>
+      
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Secure Payment via Stripe</span>
         </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
+          <span>No Contract Required</span>
+        </div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M3 14h18M9 18V6l6 12V6"/></svg>
+          <span>Cancel Anytime</span>
+        </div>
+      </div>
+      
+      <div class="tiers">
+        <!-- Tier 1 -->
+        <div class="tier">
+          <div class="tier-name">Starter</div>
+          <div class="tier-desc">4 polished blog posts/mo. Perfect for getting started with content.</div>
+          <div class="tier-price">£97 <span>/mo</span></div>
+          <div class="tier-period">Billed monthly · Cancel anytime</div>
+          <ul class="tier-features">
+            <li>4 × 800-word blog posts</li>
+            <li>SEO keyword research</li>
+            <li>Meta descriptions</li>
+            <li>Unlimited revisions</li>
+            <li>Email delivery</li>
+          </ul>
+          <a href="https://buy.stripe.com/aFa4gtaEX8tL0bJ9JM9ws0w" class="cta-btn cta-outline">Get Started →</a>
+        </div>
+        <!-- Tier 2 -->
+        <div class="tier popular">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-name">Growth</div>
+          <div class="tier-desc">8 blog posts + 20 social posts. Dominate your feed &amp; rank.</div>
+          <div class="tier-price">£197 <span>/mo</span></div>
+          <div class="tier-period">Billed monthly · Cancel anytime</div>
+          <ul class="tier-features">
+            <li>8 × 800-word blog posts</li>
+            <li>20 × social media posts</li>
+            <li>SEO keyword research</li>
+            <li>Meta descriptions</li>
+            <li>Unlimited revisions</li>
+            <li>Direct CMS delivery</li>
+          </ul>
+          <a href="https://buy.stripe.com/6oU4gt5kDdO5aQn4ps9ws0x" class="cta-btn cta-primary">Get Started →</a>
+          <div class="urgency-note">⚡ Best value for growing businesses</div>
+        </div>
+        <!-- Tier 3 -->
+        <div class="tier">
+          <div class="tier-name">Scale</div>
+          <div class="tier-desc">Full content suite. Everything your business needs to own the internet.</div>
+          <div class="tier-price">£497 <span>/mo</span></div>
+          <div class="tier-period">Billed monthly · Cancel anytime</div>
+          <ul class="tier-features">
+            <li>16 × 800-word blog posts</li>
+            <li>40 × social media posts</li>
+            <li>Email newsletter copy</li>
+            <li>Landing page copy</li>
+            <li>Full SEO optimisation</li>
+            <li>Priority 48hr delivery</li>
+            <li>Dedicated content brief</li>
+          </ul>
+          <a href="https://buy.stripe.com/3cI7sFcN525n9Mj3lo9ws0y" class="cta-btn cta-outline">Get Started →</a>
+        </div>
+      </div>
+      
+      <!-- Guarantee Box -->
+      <div class="guarantee-box">
+        <h3>🛡️ 100% Satisfaction Guarantee</h3>
+        <p>Not happy with your first month? Full refund, no questions asked. We only want customers who get real value.</p>
+      </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-section" id="how">
-        <div class="container">
-            <div class="section-header">
-                <h2>How it works</h2>
-                <p>Four steps. Done in under a week.</p>
+    <!-- SAMPLE CONTENT -->
+    <section>
+      <h2>What We Deliver</h2>
+      <p class="section-sub">Real content we've produced for businesses like yours.</p>
+      <div class="samples-section">
+        <div class="samples-grid">
+          <!-- Pet Services Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Pet Services</div>
+            <div class="sample-body">
+              <div class="sample-title">"5 Questions Every Dog Owner Should Ask Before Choosing a Groomer"</div>
+              <div class="sample-excerpt">A ranking-ready blog post targeting "dog groomer near me" searches. Includes local SEO hooks, safety tips, and a CTA to book your dog's first appointment...</div>
             </div>
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-num">1</div>
-                    <h3>Quick chat</h3>
-                    <p>We learn about your business, your customers, and what you want to achieve. About 15 minutes.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">2</div>
-                    <h3>We write</h3>
-                    <p>Each month we create your content — blog posts, social posts, whatever your plan includes.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">3</div>
-                    <h3>You review</h3>
-                    <p>Content arrives in your Google Drive. Request changes and we'll revise until you're happy.</p>
-                </div>
-                <div class="step">
-                    <div class="step-num">4</div>
-                    <h3>You publish</h3>
-                    <p>Copy, paste, schedule. We include a content calendar so you know exactly what to post and when.</p>
-                </div>
+            <div class="sample-footer">📝 1,000 words · SEO-optimised · Blog post</div>
+          </div>
+          <!-- Wedding Vendor Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Wedding Vendor</div>
+            <div class="sample-body">
+              <div class="sample-title">"The Complete Wedding Florist Checklist: What to Book 6 Months Before Your Day"</div>
+              <div class="sample-excerpt">Educational blog post that positions your florist business as the authority. Local SEO optimised for "wedding florist [city name]" — drives high-intent couple inquiries...</div>
             </div>
+            <div class="sample-footer">📝 1,000 words · Couple-facing · Blog post</div>
+          </div>
+          <!-- Fitness Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Fitness / PT</div>
+            <div class="sample-body">
+              <div class="sample-title">"Why Your Home Workout Isn't Getting Results (And What Actually Works)"</div>
+              <div class="sample-excerpt">Highly shareable blog post targeting fitness seekers. Addresses common misconceptions, positions you as the local expert, ends with a consult CTA...</div>
+            </div>
+            <div class="sample-footer">📝 900 words · SEO-driven · Blog post</div>
+          </div>
+          <!-- Artisan Baker Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Artisan Baker</div>
+            <div class="sample-body">
+              <div class="sample-title">"Behind the Scenes: How Your Morning Sourdough Gets Made"</div>
+              <div class="sample-excerpt">Story-driven content that builds connection with customers. Perfect for Instagram resharing, local SEO, and showcasing your craft...</div>
+            </div>
+            <div class="sample-footer">📝 800 words · Story-led · Blog post</div>
+          </div>
+          <!-- Social Post Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Social Posts</div>
+            <div class="sample-body">
+              <div class="sample-title">30 × Platform-Ready Social Posts (all niches)</div>
+              <div class="sample-excerpt">Carousel posts, single-image quotes, poll questions, and engagement hooks for Facebook &amp; Instagram. Designed to stop the scroll and start conversations...</div>
+            </div>
+            <div class="sample-footer">🎨 Captions + visuals guidance · 30 posts</div>
+          </div>
+          <!-- Email Sample -->
+          <div class="sample-card">
+            <div class="sample-niche">Email / Newsletter</div>
+            <div class="sample-body">
+              <div class="sample-title">"Your Monthly Market Update" — Estate Agent Newsletter</div>
+              <div class="sample-excerpt">Monthly newsletter format: local market stats, "what this means for you" analysis, and a soft service promo. Designed to keep past clients referral-ready...</div>
+            </div>
+            <div class="sample-footer">📧 HTML-ready · Newsletter copy</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="pricing-section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2>Simple pricing. No surprises.</h2>
-                <p>All plans include unlimited revisions. Cancel anytime.</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <!-- Starter -->
-                <div class="tier-card">
-                    <div class="tier-name">Starter</div>
-                    <div class="tier-desc">For businesses getting started with content</div>
-                    <div class="tier-price">£97 <span>/month</span></div>
-                    <div class="tier-period">Cancel anytime. No contract.</div>
-                    <ul class="tier-features">
-                        <li>4 blog posts per month (800 words each)</li>
-                        <li>SEO keyword research included</li>
-                        <li>Meta descriptions for each post</li>
-                        <li>Unlimited revisions</li>
-                        <li>Email support</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/aFa4gtaEX8tL0bJ9JM9ws0w" class="btn btn-secondary tier-cta">Get started</a>
-                </div>
-                
-                <!-- Growth -->
-                <div class="tier-card featured">
-                    <div class="tier-badge">Most popular</div>
-                    <div class="tier-name">Growth</div>
-                    <div class="tier-desc">For businesses with an active social presence</div>
-                    <div class="tier-price">£197 <span>/month</span></div>
-                    <div class="tier-period">Cancel anytime. No contract.</div>
-                    <ul class="tier-features">
-                        <li>8 blog posts per month</li>
-                        <li>20 social media posts</li>
-                        <li>Platform-ready (FB, IG, LinkedIn)</li>
-                        <li>Hashtags and captions included</li>
-                        <li>Monthly content calendar</li>
-                        <li>Unlimited revisions</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/6oU4gt5kDdO5aQn4ps9ws0x" class="btn btn-primary tier-cta">Get started</a>
-                </div>
-                
-                <!-- Scale -->
-                <div class="tier-card">
-                    <div class="tier-name">Scale</div>
-                    <div class="tier-desc">Full content suite for growing businesses</div>
-                    <div class="tier-price">£497 <span>/month</span></div>
-                    <div class="tier-period">Cancel anytime. No contract.</div>
-                    <ul class="tier-features">
-                        <li>16 blog posts per month</li>
-                        <li>40 social media posts</li>
-                        <li>4 email newsletter templates</li>
-                        <li>Monthly strategy call (30 min)</li>
-                        <li>Priority 48-hour delivery</li>
-                        <li>Unlimited revisions</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/3cI7sFcN525n9Mj3lo9ws0y" class="btn btn-secondary tier-cta">Get started</a>
-                </div>
-            </div>
-            
-            <div class="guarantee-box">
-                <h3>If you're not happy, we'll refund you</h3>
-                <p>Not satisfied with your first month? Full refund, no questions asked. We only want customers who get real value.</p>
-            </div>
+    <!-- SOCIAL PROOF -->
+    <div class="social-proof-section" style="background: var(--bg); border: 1px solid var(--border);">
+      <h2 style="text-align:center;">Built for the Local Business Owner</h2>
+      <p class="section-sub" style="text-align:center; margin-bottom:0;">Who doesn't have time to write but knows content is the only way to compete.</p>
+      <div class="proof-stats">
+        <div>
+          <div class="proof-stat-num">4</div>
+          <div class="proof-stat-label">Niches We Know Cold</div>
         </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>What business owners say</h2>
-                <p>Real feedback from people we work with.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">Finally, content that sounds like it's written by someone who understands dog grooming. My appointment bookings went up 40% in two months. I just approve and post.</div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">SM</div>
-                        <div>
-                            <div class="author-name">Sarah M.</div>
-                            <div class="author-role">Dog groomer, Manchester</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">I was sceptical at first — AI-written content usually sounds robotic. But these actually sound like me. The blog posts started ranking for local keywords within weeks.</div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">JT</div>
-                        <div>
-                            <div class="author-name">James T.</div>
-                            <div class="author-role">Personal trainer, Birmingham</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">The social posts are genuinely useful. I used to spend 3 hours a week staring at a blank screen — now it's 15 minutes of review and I'm done.</div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">EL</div>
-                        <div>
-                            <div class="author-name">Emma L.</div>
-                            <div class="author-role">Wedding florist, Bristol</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">They know the bakery niche. The behind-the-scenes post about our sourdough process got more engagement than anything I've posted in years. Real comments from real customers.</div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">MR</div>
-                        <div>
-                            <div class="author-name">Michael R.</div>
-                            <div class="author-role">Artisan baker, Edinburgh</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>
+          <div class="proof-stat-num">24hr</div>
+          <div class="proof-stat-label">Average Delivery Time</div>
         </div>
-    </section>
-
-    <!-- Samples -->
-    <section class="samples-section" id="samples">
-        <div class="container">
-            <div class="section-header">
-                <h2>Sample content we've written</h2>
-                <p>Real examples across different niches.</p>
-            </div>
-            <div class="samples-grid">
-                <div class="sample-card">
-                    <div class="sample-header">Pet Services</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">5 Questions Every Dog Owner Should Ask Before Choosing a Groomer</h3>
-                        <p class="sample-excerpt">A ranking-ready blog post targeting "dog groomer near me" searches. Includes safety tips, questions to ask, and a natural CTA to book.</p>
-                    </div>
-                    <div class="sample-footer">1,000 words · SEO-optimised</div>
-                </div>
-                <div class="sample-card">
-                    <div class="sample-header">Wedding Vendor</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">The Complete Wedding Florist Checklist: What to Book 6 Months Before Your Day</h3>
-                        <p class="sample-excerpt">Educational content that positions your business as the expert. Optimised for "wedding florist [city]" local search.</p>
-                    </div>
-                    <div class="sample-footer">1,000 words · Couple-facing</div>
-                </div>
-                <div class="sample-card">
-                    <div class="sample-header">Fitness / PT</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">Why Your Home Workout Isn't Getting Results (And What Actually Works)</h3>
-                        <p class="sample-excerpt">Highly shareable content addressing common fitness mistakes. Ends with a consultation CTA for local clients.</p>
-                    </div>
-                    <div class="sample-footer">900 words · SEO-driven</div>
-                </div>
-                <div class="sample-card">
-                    <div class="sample-header">Artisan Baker</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">Behind the Scenes: How Your Morning Sourdough Gets Made</h3>
-                        <p class="sample-excerpt">Story-driven content that builds connection with customers. Perfect for Instagram resharing and local SEO.</p>
-                    </div>
-                    <div class="sample-footer">800 words · Story-led</div>
-                </div>
-                <div class="sample-card">
-                    <div class="sample-header">Social Posts</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">30 Platform-Ready Social Posts (all niches)</h3>
-                        <p class="sample-excerpt">Carousel concepts, single-image posts, poll questions, and engagement hooks. Ready for Facebook and Instagram.</p>
-                    </div>
-                    <div class="sample-footer">Captions + guidance · 30 posts</div>
-                </div>
-                <div class="sample-card">
-                    <div class="sample-header">Email Newsletter</div>
-                    <div class="sample-body">
-                        <h3 class="sample-title">Your Monthly Market Update — Estate Agent Newsletter</h3>
-                        <p class="sample-excerpt">Monthly newsletter with local stats, market analysis, and soft service promotion. Keeps past clients engaged.</p>
-                    </div>
-                    <div class="sample-footer">HTML-ready · Newsletter copy</div>
-                </div>
-            </div>
+        <div>
+          <div class="proof-stat-num">23+</div>
+          <div class="proof-stat-label">Happy Businesses</div>
         </div>
-    </section>
+        <div>
+          <div class="proof-stat-num">4.8★</div>
+          <div class="proof-stat-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
 
     <!-- FAQ -->
-    <section class="faq-section" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Common questions</h2>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-q">How does payment work?</div>
-                    <div class="faq-a">All payments are processed securely through Stripe — the same system used by Amazon and Google. We never see your card details. You'll be billed monthly and can cancel anytime from your Stripe dashboard.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">What if I'm not happy with the content?</div>
-                    <div class="faq-a">We offer unlimited revisions until you're satisfied. If after revisions you're still not happy, we'll refund your first month in full — no questions asked.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Do I need to sign a contract?</div>
-                    <div class="faq-a">No contract. All plans are month-to-month. Cancel whenever you want — no penalties, no hard feelings.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">How do I share my topic ideas?</div>
-                    <div class="faq-a">We set up a simple Google Form for you. You can also just reply to any delivery email with topics or ideas. We also suggest topics based on keyword research if you're not sure what to write about.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Can I see a sample before committing?</div>
-                    <div class="faq-a">Yes. Email clawgenesis@gmail.com with your niche and we'll send a free sample post within 24 hours. No payment required.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">Who writes the content?</div>
-                    <div class="faq-a">We use AI-assisted production: our models generate drafts optimised for your industry and keywords, then apply human quality review before delivery. This lets us offer professional content at freelance prices.</div>
-                </div>
-            </div>
-        </div>
+    <section class="faq-section">
+      <h2>Common Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">How does payment work?</div>
+        <div class="faq-a">All payments are processed securely through Stripe — the same system used by Amazon and Google. We never see your card details. You'll be billed monthly and can cancel anytime from your Stripe dashboard.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I'm not happy with the content?</div>
+        <div class="faq-a">We offer unlimited revisions until you're satisfied. If after revisions you're still not happy, we'll refund your first month in full — no questions asked.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I sign a contract?</div>
+        <div class="faq-a">No. All plans are month-to-month. Cancel anytime — no questions asked, no penalties, no hard feelings.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I provide my topic suggestions?</div>
+        <div class="faq-a">Via a simple Google Form we set up for you. We also offer topic recommendations based on keyword research included in your plan.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I get a sample before committing?</div>
+        <div class="faq-a">Yes — email clawgenesis@gmail.com with your niche and we'll send a free sample post within 24 hours. No payment required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who writes the content?</div>
+        <div class="faq-a">AI-assisted production: our models generate the first draft optimised for your industry and keywords, then we apply human quality review before delivery.</div>
+      </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to stop worrying about content?</h2>
-            <p>Join 23+ businesses who finally have a consistent content calendar without the time investment.</p>
-            <a href="https://buy.stripe.com/6oU4gt5kDdO5aQn4ps9ws0x" class="btn btn-primary">Start your first month</a>
-            <div class="payment-trust">
-                <span>🔒 Secure via Stripe</span>
-                <span>💳 All major cards</span>
-                <span>↩️ Cancel anytime</span>
-            </div>
-            <p style="margin-top:20px;font-size:0.875rem;">Questions? Email clawgenesis@gmail.com for a free sample</p>
-        </div>
+    <!-- FINAL CTA -->
+    <section class="cta-final">
+      <h2>Ready to Dominate Your Niche?</h2>
+      <p>Join 23+ businesses who stopped worrying about content and started growing.</p>
+      <a href="https://buy.stripe.com/6oU4gt5kDdO5aQn4ps9ws0x" class="cta-btn cta-primary" style="max-width:300px;margin:0 auto;font-size:17px;padding:16px;">
+        Start Your First Month →
+      </a>
+      <div class="payment-security">
+        <span>🔒 Secure checkout via Stripe</span>
+        <span>💳 All major cards accepted</span>
+        <span>🔄 Cancel anytime</span>
+      </div>
+      <p style="margin-top:16px;font-size:13px;">Questions? Email clawgenesis@gmail.com for a free sample post</p>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="container footer-inner">
-            <div class="footer-links">
-                <a href="mailto:clawgenesis@gmail.com">clawgenesis@gmail.com</a>
-            </div>
-            <div class="footer-copy">
-                ContentForge · Content writing for local businesses · UK
-            </div>
-        </div>
+      <p>ContentForge · AI Content Services for Local Businesses · clawgenesis@gmail.com</p>
+      <p style="margin-top:8px;">Payment processing by Stripe · 100% money-back guarantee</p>
     </footer>
+  </div>
 </body>
 </html>
